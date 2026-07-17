@@ -1,8 +1,9 @@
+.venv/
+myenv/
+__pycache__/
+*.pyc
+local.settings.json
 .terraform/
 *.tfstate
 *.tfstate.backup
 .terraform.lock.hcl
-local.settings.json
-.venv/
-__pycache__/
-*.pyc
