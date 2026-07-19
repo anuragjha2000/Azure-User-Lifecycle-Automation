@@ -191,3 +191,4 @@ of onboarding/offboarding events.
 ## 📄 License
 
 MIT License
+https://github.com/anuragjha2000/Azure-User-Lifecycle-Automation/blob/master/LICENSE
