@@ -19,18 +19,20 @@ IAM platforms like SailPoint and Okta, but built entirely on Azure-native toolin
 
 ## 🏗️ Architecture
 
-[Trigger Source]              [Automation Layer]              [Identity Layer]
-HTTP request        ────▶   Azure Function (Python)   ────▶  Microsoft Graph API
-(simulated HR event)         Consumption Plan                 (Entra ID)
-│                                │
-▼                                ▼
-Azure Key Vault                  Security Groups /
-(RBAC-authorized,                App Role Assignments
-Managed Identity access)
-│
-▼
-Azure Monitor / Log Analytics
-(FunctionAppLogs, audit trail via KQL)
+```
+ [Trigger Source]              [Automation Layer]              [Identity Layer]
+ HTTP request        ────▶   Azure Function (Python)   ────▶  Microsoft Graph API
+ (simulated HR event)         Consumption Plan                 (Entra ID)
+                                    │                                │
+                                    ▼                                ▼
+                             Azure Key Vault                  Security Groups /
+                             (RBAC-authorized,                App Role Assignments
+                              Managed Identity access)
+                                    │
+                                    ▼
+                          Azure Monitor / Log Analytics
+                          (FunctionAppLogs, audit trail via KQL)
+```
 
 | Layer | Tool |
 |---|---|
@@ -56,12 +58,15 @@ Azure Monitor / Log Analytics
 - ✅ Centralized audit logging via Log Analytics, queried with KQL
 
 ## 📂 Project Structure
+
+```
 ├── terraform/              # Infrastructure as Code (Resource Group, Storage,
 │                              Function App, Log Analytics, Key Vault, RBAC)
 ├── UserLifecycleFunction/  # Azure Function source (function_app.py, v2 model)
 ├── .github/workflows/      # CI/CD pipeline (deploy.yml)
 ├── docs/screenshots/       # Evidence screenshots (see below)
 └── README.md
+```
 
 ## 🖥️ Setup & Deployment
 
@@ -75,25 +80,37 @@ Azure Monitor / Log Analytics
 6. Deploy the function: `func azure functionapp publish <app-name>` (or just
    push to `master` — GitHub Actions handles it automatically)
 7. Trigger via HTTP request using the Function's host key:
-```bash
+   ```bash
    curl -X POST "https://<your-app>.azurewebsites.net/api/onboard?code=<function-key>" \
      -H "Content-Type: application/json" \
      -d '{"displayName": "Jane Doe", "mailNickname": "jdoe", "userPrincipalName": "jdoe@yourtenant.onmicrosoft.com"}'
-```
+   ```
 
 ## 📸 Screenshots
 
-| App Registration + Permissions | Terraform Apply (Zero Drift) |
-|---|---|
-| ![api-permissions](docs/screenshots/api-permissions.png) | ![terraform-resources](docs/screenshots/terraform-apply-resources.png) |
+**App Registration — API Permissions (Admin Consent Granted)**
+![API Permissions](<img width="1509" height="835" alt="api-permissions" src="https://github.com/user-attachments/assets/fdf81b99-ee78-46d1-b720-f144d6a74ca4" />
+)
 
-| Onboarding Success (Live Endpoint) | Offboarding Success (Live Endpoint) |
-|---|---|
-| ![onboard-success](docs/screenshots/onboard-success.png) | ![offboard-success](docs/screenshots/offboard-success.png) |
+**Terraform Apply — All Resources Provisioned, Zero Drift**
+![Terraform Resources](<img width="1913" height="954" alt="terraform-apply-resources" src="https://github.com/user-attachments/assets/0254ddb1-5b5c-4503-9ada-78d8f2d9291c" />
+)
 
-| GitHub Actions CI/CD | Log Analytics Audit Query |
-|---|---|
-| ![github-actions](docs/screenshots/github-actions-success.png) | ![log-analytics](docs/screenshots/log-analytics-query.png) |
+**Offboarding Verified in Entra ID Portal**
+![Offboard Success](<img width="1917" height="948" alt="offboard-success-portal" src="https://github.com/user-attachments/assets/dfe75675-2e6d-4ad6-b5da-72b286165255" />
+)
+
+**GitHub Actions CI/CD — Successful Deployment**
+![GitHub Actions Success](<img width="1919" height="917" alt="github-actions-success" src="https://github.com/user-attachments/assets/0dc91b9e-3843-4610-bffb-d3f3c4d16ebd" />
+)
+
+**Offboard Test + Diagnostic Settings Creation (Cloud Shell)**
+![Offboard and Diagnostics CLI](<img width="1918" height="957" alt="offboard-and-diagnostics-cli" src="https://github.com/user-attachments/assets/f7e9ab65-cee1-40b7-89d3-30b8be9d340e" />
+)
+
+**Log Analytics — KQL Audit Trail Query (Onboard/Offboard Events)**
+![Log Analytics Audit Query](<img width="1913" height="949" alt="log-analytics-audit-query" src="https://github.com/user-attachments/assets/a67309e5-f94d-432c-ae24-5075baf29309" />
+)
 
 ## 🐛 Troubleshooting Log (Real Issues Hit & Fixed)
 
@@ -124,6 +141,9 @@ experience — not just the happy path:
   start appearing after the diagnostic setting was created, even though `AzureMetrics`
   arrived immediately — normal Consumption-plan cold-start behavior for the logging
   pipeline, not a misconfiguration.
+- **401 Unauthorized on live deployed endpoint** → function key was pasted with
+  literal `<` `>` placeholder brackets left in by mistake; fixed by copying the
+  raw value cleanly from the portal's "App keys" blade.
 
 ## 🧠 Key Concepts & Technologies Used
 
