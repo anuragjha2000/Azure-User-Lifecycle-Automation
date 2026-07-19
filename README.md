@@ -89,28 +89,22 @@ IAM platforms like SailPoint and Okta, but built entirely on Azure-native toolin
 ## 📸 Screenshots
 
 **App Registration — API Permissions (Admin Consent Granted)**
-![API Permissions](<img width="1509" height="835" alt="api-permissions" src="https://github.com/user-attachments/assets/fdf81b99-ee78-46d1-b720-f144d6a74ca4" />
-)
+![API Permissions](docs/screenshots/api-permissions.png)
 
 **Terraform Apply — All Resources Provisioned, Zero Drift**
-![Terraform Resources](<img width="1913" height="954" alt="terraform-apply-resources" src="https://github.com/user-attachments/assets/0254ddb1-5b5c-4503-9ada-78d8f2d9291c" />
-)
+![Terraform Resources](docs/screenshots/terraform-apply-resources.png)
 
 **Offboarding Verified in Entra ID Portal**
-![Offboard Success](<img width="1917" height="948" alt="offboard-success-portal" src="https://github.com/user-attachments/assets/dfe75675-2e6d-4ad6-b5da-72b286165255" />
-)
+![Offboard Success](docs/screenshots/offboard-success-portal.png)
 
 **GitHub Actions CI/CD — Successful Deployment**
-![GitHub Actions Success](<img width="1919" height="917" alt="github-actions-success" src="https://github.com/user-attachments/assets/0dc91b9e-3843-4610-bffb-d3f3c4d16ebd" />
-)
+![GitHub Actions Success](docs/screenshots/github-actions-success.png)
 
 **Offboard Test + Diagnostic Settings Creation (Cloud Shell)**
-![Offboard and Diagnostics CLI](<img width="1918" height="957" alt="offboard-and-diagnostics-cli" src="https://github.com/user-attachments/assets/f7e9ab65-cee1-40b7-89d3-30b8be9d340e" />
-)
+![Offboard and Diagnostics CLI](docs/screenshots/offboard-and-diagnostics-cli.png)
 
 **Log Analytics — KQL Audit Trail Query (Onboard/Offboard Events)**
-![Log Analytics Audit Query](<img width="1913" height="949" alt="log-analytics-audit-query" src="https://github.com/user-attachments/assets/a67309e5-f94d-432c-ae24-5075baf29309" />
-)
+![Log Analytics Audit Query](docs/screenshots/log-analytics-audit-query.png)
 
 ## 🐛 Troubleshooting Log (Real Issues Hit & Fixed)
 
