@@ -89,22 +89,22 @@ IAM platforms like SailPoint and Okta, but built entirely on Azure-native toolin
 ## 📸 Screenshots
 
 **App Registration — API Permissions (Admin Consent Granted)**
-![API Permissions](docs/screenshots/api-permissions.png)
+![API Permissions](https://github.com/anuragjha2000/Azure-User-Lifecycle-Automation/blob/master/api-permissions.png)
 
 **Terraform Apply — All Resources Provisioned, Zero Drift**
-![Terraform Resources](docs/screenshots/terraform-apply-resources.png)
+![Terraform Resources](https://github.com/anuragjha2000/Azure-User-Lifecycle-Automation/blob/master/terraform-apply-resources.png)
 
 **Offboarding Verified in Entra ID Portal**
-![Offboard Success](docs/screenshots/offboard-success-portal.png)
+![Offboard Success](https://github.com/anuragjha2000/Azure-User-Lifecycle-Automation/blob/master/offboard-success-portal.png)
 
 **GitHub Actions CI/CD — Successful Deployment**
-![GitHub Actions Success](docs/screenshots/github-actions-success.png)
+![GitHub Actions Success](https://github.com/anuragjha2000/Azure-User-Lifecycle-Automation/blob/master/github-actions-success.png)
 
 **Offboard Test + Diagnostic Settings Creation (Cloud Shell)**
-![Offboard and Diagnostics CLI](docs/screenshots/offboard-and-diagnostics-cli.png)
+![Offboard and Diagnostics CLI](https://github.com/anuragjha2000/Azure-User-Lifecycle-Automation/blob/master/offboard-and-diagnostics-cli.png)
 
 **Log Analytics — KQL Audit Trail Query (Onboard/Offboard Events)**
-![Log Analytics Audit Query](docs/screenshots/log-analytics-audit-query.png)
+![Log Analytics Audit Query](https://github.com/anuragjha2000/Azure-User-Lifecycle-Automation/blob/master/log-analytics-audit-query.png)
 
 ## 🐛 Troubleshooting Log (Real Issues Hit & Fixed)
 
